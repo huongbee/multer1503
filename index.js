@@ -30,7 +30,19 @@ app.get('/upload-file',(req,res)=>{
  * filter: mime type, check file size
  * rename file
  */
-app.post('/upload-file',upload.array('image',4),(req,res)=>{
+// app.post('/upload-file',upload.array('image',4),(req,res)=>{
+//     const arrImage = req.files 
+//     res.send({arrImage})
+// });
+const config = upload.fields([{
+    name: 'avatar',
+    maxCount: 1
+},{
+    name: 'image',
+    maxCount: 2
+}]);
+
+app.post('/upload-file',config,(req,res)=>{
     const arrImage = req.files 
     res.send({arrImage})
 });
