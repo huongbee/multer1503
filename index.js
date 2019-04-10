@@ -21,9 +21,18 @@ app.get('/upload-file',(req,res)=>{
     res.render('upload');
 })
 
-app.post('/upload-file',upload.single('image'),(req,res)=>{
-    const image = req.file 
-    res.send({image})
+// app.post('/upload-file',upload.single('image'),(req,res)=>{
+//     const image = req.file 
+//     const name = req.body.txtname 
+//     res.send({image,name})
+// });
+/**
+ * filter: mime type, check file size
+ * rename file
+ */
+app.post('/upload-file',upload.array('image',4),(req,res)=>{
+    const arrImage = req.files 
+    res.send({arrImage})
 });
 
 app.listen(3000,()=>console.log('Server started!'))

@@ -8,7 +8,9 @@
     <body>
         <div>
             <form action="/upload-file" method="POST" enctype="multipart/form-data">
-                <input type="file" name="image">
+                <%# <input type="file" name="image"> %>
+                <%# <input type="text" name="txtname"> %>
+                <input type="file" name="image" multiple>
                 <button type="submit">Upload</button>
             </form>
         </div>
